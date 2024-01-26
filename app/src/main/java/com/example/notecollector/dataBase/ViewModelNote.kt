@@ -23,11 +23,8 @@ class ViewModelNote @Inject constructor(private val repo: repo):ViewModel(){
         viewModelScope.launch(Dispatchers.IO){
             repo.getAll().distinctUntilChanged().collect{list->
 
-                if (list.isEmpty()) {
-                    note.value= emptyList()
-                } else {
                     note.value = list
-                }
+
             }
         }
     }
