@@ -4,7 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.notecollector.dataBase.NoteData
 
-@Database(entities = [NoteData::class], version = 1,exportSchema = false)
+@Database(entities = [NoteData::class], version = 3,exportSchema = false)
 abstract class DataBase : RoomDatabase() {
 
 

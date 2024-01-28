@@ -28,6 +28,7 @@ fun TopBar(){
         .fillMaxWidth()
         .height(56.dp)
         .padding(bottom = 12.dp),
+        color = MaterialTheme.colorScheme.primary,
         shadowElevation = 4.dp) {
         Row (modifier = Modifier
             .fillMaxSize()

@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -34,6 +35,7 @@ import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import androidx.room.Delete
 import com.example.notecollector.dataBase.NoteData
+import com.example.notecollector.utilities.colorManger
 
 @Composable
 fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
@@ -43,9 +45,12 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
 
             Card (modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp)){
+                .padding(20.dp),
+                colors = CardDefaults.cardColors(colorManger(colorManager = noteData.colorValue))){
 
-                Row (modifier = Modifier.fillMaxWidth().padding(8.dp), horizontalArrangement = Arrangement.End){
+                Row (modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp), horizontalArrangement = Arrangement.End){
 
                     Icon(imageVector = Icons.Rounded.Close, contentDescription = "Close icon",
                         modifier = Modifier.clickable {

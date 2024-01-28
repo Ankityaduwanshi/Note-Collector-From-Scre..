@@ -28,7 +28,7 @@ import com.example.notecollector.activity.DeleteConfirmation
 import com.example.notecollector.activity.ReadAndUpdate
 import com.example.notecollector.dataBase.NoteData
 import java.time.format.DateTimeFormatter
-import com.example.notecollector.utilities.ColorManger
+import com.example.notecollector.utilities.colorManger
 
 @Composable
 fun CardCreator(noteData: NoteData, remove: (NoteData) -> Unit) {
@@ -57,7 +57,6 @@ fun CardCreator(noteData: NoteData, remove: (NoteData) -> Unit) {
         ReadAndUpdate(noteData = noteData, readShow = {it -> readShow = it})
     }
 
-
     //Ui Part
 
     Card(
@@ -67,6 +66,7 @@ fun CardCreator(noteData: NoteData, remove: (NoteData) -> Unit) {
             .clickable {
                 readShow = true
             },
+        colors = CardDefaults.cardColors(containerColor = colorManger(noteData.colorValue)),
         shape = RoundedCornerShape(topEnd = 36.dp, bottomStart = 36.dp),
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
