@@ -86,7 +86,7 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
                         label = { Text(text = "Description")},
                         keyboardActions = KeyboardActions.Default,
                         enabled = true,
-                        maxLines = 12,
+                        maxLines = 20,
                         modifier = Modifier
                             .fillMaxWidth())
 
