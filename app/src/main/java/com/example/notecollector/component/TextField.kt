@@ -27,6 +27,7 @@ fun EntryField(modifier: Modifier = Modifier,
         placeholder = { Text(text = placeholder) },
         keyboardOptions = KeyboardOptions(imeAction = imeAction),
         maxLines = maxLine,
+        enabled = true,
         modifier= modifier,
         colors = TextFieldDefaults.colors(focusedContainerColor = Color.Transparent,
             unfocusedContainerColor = Color.Transparent)
