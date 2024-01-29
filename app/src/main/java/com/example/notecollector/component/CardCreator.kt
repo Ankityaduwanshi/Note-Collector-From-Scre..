@@ -12,7 +12,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
@@ -53,8 +56,8 @@ fun CardCreator(noteData: NoteData, remove: (NoteData) -> Unit) {
         mutableStateOf(false)
     }
 
-    if (readShow){
-        ReadAndUpdate(noteData = noteData, readShow = {it -> readShow = it})
+    if (readShow) {
+        ReadAndUpdate(noteData = noteData, readShow = { it -> readShow = it })
     }
 
     //Ui Part
@@ -70,31 +73,31 @@ fun CardCreator(noteData: NoteData, remove: (NoteData) -> Unit) {
         shape = RoundedCornerShape(topEnd = 36.dp, bottomStart = 36.dp),
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
-        Column(modifier = Modifier.padding(20.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = noteData.title,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.width(300.dp),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Row {
-
-                    //Delete process
-                    Icon(imageVector = Icons.Rounded.Delete,
-                        contentDescription = "Delete icon",
-                        modifier = Modifier.clickable {
-                            popShow = true
-                        })
-                    if (popShowconfirmation) {
-                        remove(noteData)
-                        popShowconfirmation = false
-                    }
+                Row (modifier = Modifier.fillMaxWidth().weight(1f)){
+                    Text(
+                        text = noteData.title,
+                        style = MaterialTheme.typography.titleLarge,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 }
+                //Delete process
+                IconButton(onClick = { popShow = true }) {
+                    Icon(imageVector = Icons.Rounded.Delete, contentDescription = "DeleteButton")
+
+
+                }
+                if (popShowconfirmation) {
+                    remove(noteData)
+                    popShowconfirmation = false
+                }
+
             }
 
             Text(

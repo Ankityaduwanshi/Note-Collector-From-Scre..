@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -44,22 +45,21 @@ fun DeleteConfirmation(popShow :(Boolean)->Unit, confirmation:(Boolean)->Unit ){
                             style = MaterialTheme.typography.titleLarge,
                             fontWeight = FontWeight.Bold
                         )
-                        Spacer(modifier = Modifier.height(12.dp))
 
                         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround) {
 
                             Button(onClick = { popShow(false)
                                              confirmation(true)},
-                                modifier = Modifier.width(150.dp)) {
+                                modifier = Modifier.weight(1f).padding(12.dp)) {
 
-                                Text(text = "Yes, delete it", style = MaterialTheme.typography.titleMedium)
+                                Text(text = "Yes, delete it")
                                 
                             }
                             Button(onClick = { popShow(false)
                                              confirmation(false)},
-                                modifier = Modifier.width(150.dp)) {
+                                modifier = Modifier.weight(1f).padding(12.dp)) {
 
-                                Text(text = "No, keep it", style = MaterialTheme.typography.titleMedium)
+                                Text(text = "No, keep it")
                                 
                             }
 
