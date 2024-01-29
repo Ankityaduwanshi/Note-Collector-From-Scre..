@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,6 +18,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -52,10 +54,11 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
                     .fillMaxWidth()
                     .padding(8.dp), horizontalArrangement = Arrangement.End){
 
-                    Icon(imageVector = Icons.Rounded.Close, contentDescription = "Close icon",
-                        modifier = Modifier.clickable {
-                            readShow(false)
-                        })
+                    IconButton(onClick = { readShow(false) }) {
+                        Icon(imageVector = Icons.Rounded.Close, contentDescription = "Close icon")
+                    }
+
+//
                 }
 
 
@@ -80,15 +83,15 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
                         maxLines = 2,
                         modifier = Modifier.fillMaxWidth())
 
-
-                    OutlinedTextField(value = description,
-                        onValueChange ={description = it},
-                        label = { Text(text = "Description")},
-                        keyboardActions = KeyboardActions.Default,
-                        enabled = true,
-                        maxLines = 14,
-                        modifier = Modifier
-                            .fillMaxWidth())
+                    Row(modifier = Modifier.weight(1f)) {
+                        OutlinedTextField(value = description,
+                            onValueChange ={description = it},
+                            label = { Text(text = "Description")},
+                            keyboardActions = KeyboardActions.Default,
+                            enabled = true,
+                            modifier = Modifier
+                                .fillMaxWidth())
+                    }
 
                     Spacer(modifier = Modifier.height(12.dp))
 
@@ -96,7 +99,7 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
                         noteData.title = title
                         noteData.description = description
                         readShow(false)
-                    }) {
+                    }, modifier = Modifier.imePadding()) {
                         Text(text = "Update")
                     }
                 }
