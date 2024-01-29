@@ -1,15 +1,24 @@
 package com.example.notecollector.activity
 
+import android.view.WindowContentFrameStats
+import android.view.WindowInsetsAnimationControlListener
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.captionBarPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.mandatorySystemGesturesPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -35,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.room.Delete
 import com.example.notecollector.dataBase.NoteData
 import com.example.notecollector.utilities.colorManger
@@ -83,7 +93,7 @@ fun ReadAndUpdate(noteData: NoteData,readShow:(Boolean)->Unit){
                         maxLines = 2,
                         modifier = Modifier.fillMaxWidth())
 
-                    Row(modifier = Modifier.weight(1f)) {
+                    Row(modifier = Modifier.weight(1f,fill = false)) {
                         OutlinedTextField(value = description,
                             onValueChange ={description = it},
                             label = { Text(text = "Description")},
